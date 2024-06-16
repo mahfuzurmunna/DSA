@@ -6,7 +6,7 @@
 //   }
 // }
 
-//normal approach
+//normal approach (stack)
 const depthFirstTraversal = (root) => {
   if (root === null) {
     return;
