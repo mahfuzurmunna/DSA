@@ -44,7 +44,6 @@ class Queue {
 }
 
 //usage example
-
 let myQueue = new Queue();
 
 myQueue.enqueue(2);
