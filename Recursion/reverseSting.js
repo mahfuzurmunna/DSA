@@ -1,28 +1,21 @@
 //iterative approach
 
-function reverseString(string) {
-  let stringLength = string.length - 1;
-  let reversed = "";
+// function iterativeReverseString(string) {}
 
-  for (let i = stringLength; i >= 0; i--) {
-    reversed += string[i];
-  }
-  return reversed;
-}
-
-const normal = "hello";
-console.log(reverseString(normal));
+// const normal = "hello";
+// console.log(reverseString(normal));
 
 //recursive approach
 function recursiveReverseString(string) {
-  let stringLength = string.length - 1;
-  let reversedString = "";
-  if (string === "") {
-    return;
-  }
+  if (string === "") return string;
 
-  return (
-    string[string.length - 1] +
-    recursiveReverseString(string.substring(0, stringLength))
+  let reversePart = recursiveReverseString(
+    string.substring(0, string.length - 1)
   );
+  // console.log(reversePart);
+  let result = string[string.length - 1] + reversePart;
+  console.log(result);
+  return result;
 }
+
+console.log(recursiveReverseString("12345"));
