@@ -1,32 +1,18 @@
-//count vowels in a string
-function isVowel(character) {
-  let lowerChar = character.toLowerCase();
-  let vowels = "aeiou";
-  //   console.log(lowerChar);
-  if (vowels.indexOf(lowerChar) != -1) {
-    return true;
-  } else {
-    return false;
-  }
+function isVowel(char) {
+  let lowerChar = char.toLowerCase();
+  const vowels = "aeiou";
+  return vowels.includes(lowerChar) ? 1 : 0;
 }
 
-// isVowel("munna");
-function countVowels(string) {
-  let count = 0;
-
-  for (let i = 0; i < string.length; i++) {
-    if (isVowel(string[i])) {
-      count++;
-    }
+function recursive_count_vowels(string, stringLength) {
+  if (stringLength === 0) {
+    return 0;
   }
 
-  return count;
-}
+  const decreaseString = recursive_count_vowels(string, stringLength - 1);
 
-//recursive method
-function recursiveCountVowels(string, stringLength) {
-  if (stringLength === 1) {
-    return Number(isVowel(string[0]));
-  }
-  return recursiveCountVowels(string, string.length - 1);
+  let result = isVowel(string[stringLength]) + decreaseString;
+  return result;
 }
+const myString = "munna";
+console.log(recursive_count_vowels(myString, myString.length - 1));
