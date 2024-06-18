@@ -1,6 +1,9 @@
 function sumOfN(value) {
-  if (value === 1) {
-    return 1;
+  let sum = 0;
+  for (let i = 1; i <= value; i++) {
+    sum = sum + i;
   }
-  return value + sumOfN(value - 1);
+  return sum;
 }
+
+console.log(sumOfN(6));

@@ -1,26 +1,11 @@
-//iterative approach
-
-// function iterativeReverseString(string) {}
-
-// const normal = "hello";
-// console.log(reverseString(normal));
-
 //recursive approach
 function recursiveReverseString(string, stringLength) {
-  console.log(`Current String ${string} `);
-  if (string.length === 0) return string;
+  if (stringLength === 0) return "";
+  console.log(string[stringLength - 1]);
+  let recursiveFunc = recursiveReverseString(string, stringLength - 1);
 
-  let reversePart = recursiveReverseString(
-    string.substring(0, string.length - 1)
-  );
-  // console.log(reversePart);
-  let result = string[string.length - 1] + reversePart;
-  console.log(
-    `reversing last char ${
-      string[string.length - 1]
-    } added in front of ${reversePart} to form a result ${result}`
-  );
+  let result = string[stringLength - 1] + recursiveFunc;
   return result;
 }
-
-console.log(recursiveReverseString("munna"));
+const myString = "mun";
+console.log(recursiveReverseString(myString, myString.length));
