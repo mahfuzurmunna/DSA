@@ -1,24 +1,19 @@
-function removeTAS(inputString) {
+const myString = " m  unnna ";
+
+//iterative approach
+function removeSpaceTabs(string) {
   let result = "";
-  for (let i = 0; i < inputString.length; i++) {
-    let char = inputString[i];
+
+  for (let i = 0; i < string.length; i++) {
+    let char = string[i];
     if (char !== " " && char !== "\t") {
       result += char;
     }
   }
+
   return result;
 }
 
-function recursiveRTAS(inputString) {
-  if (inputString.length === 0) {
-    return "";
-  }
+console.log(removeSpaceTabs(myString));
 
-  const firstChar = inputString[0];
-  const restOfString = inputString.slice(1);
-
-  if (firstChar === " " && firstChar === "\t") {
-    return recursiveRTAS(restOfString);
-  }
-  return firstChar + recursiveRTAS(restOfString);
-}
+function recursiveTABS(string) {}
