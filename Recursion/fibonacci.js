@@ -20,3 +20,5 @@ function recursiveFibonacci(value) {
   }
   return recursiveFibonacci(value - 2) + recursiveFibonacci(value - 1);
 }
+
+console.log(fibonacci(4));
