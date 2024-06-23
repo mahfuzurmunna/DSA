@@ -12,6 +12,10 @@ Stacks are useful when we need to make sure elements follow the **_LIFO_** metho
 
 &#10687; The undo/redo functionality many programs offers.
 
+### Visualization of stack &#8227;
+
+![Screenshot of stack process](../assets/stack.png)
+
 ```javascript
 class Stack {
   constructor() {
@@ -132,4 +136,4 @@ console.log(myStack.size());
 
 ## Author
 
-#### Akhil Nagpal
+#### Mahfuzur Rahman Munna
