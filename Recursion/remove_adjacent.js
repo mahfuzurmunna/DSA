@@ -11,7 +11,7 @@ console.log(removeAdjIterative("munna"));
 
 //remove adjacency using recursion
 function removeAdjRecursion(string) {
-  if (string === "") return string;
+  if (string === "") return "";
 
   if (string[0] === string[1]) {
     return removeAdjRecursion(string.substring(1));
@@ -19,14 +19,20 @@ function removeAdjRecursion(string) {
   return string[0] + removeAdjRecursion(string.substring(1));
 }
 
-console.log();
+console.log(removeAdjRecursion("eeeemmmmmmmmm1000"));
+
+// console.log();
+
 //using js functions to remove all the duplicates
-let str = "22342";
-let words = str.toLowerCase().split(" ");
+let str = "aabbccaade";
+let words = str.toLowerCase().split("");
+// console.log(words);
 
 const remDuplicate = words.filter((data, index, src) => {
-  console.log(`src:${src}, index${index}, data:${data}`);
+  // console.log(`src:${src}, index${index}, data:${data}`);
   return src.indexOf(data) === index;
 });
 const result = remDuplicate.join("");
-console.log(typeof result);
+// console.log(result);
+
+// console.log(typeof result);
