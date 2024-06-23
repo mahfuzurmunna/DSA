@@ -1,3 +1,24 @@
+# Queue Concept
+
+A queue is a special type data structure is used for storing and managing data in a specific order. It follows the principal of **FIFO** where the first element added to the queue is the first one to be removed.
+
+To remember queue in other way we can compare queue with McDonalds queue system.
+
+## Usage Of Queue:
+
+&#10687; Task scheduling in operating systems
+
+&#10687; Simulation of real-world systems (e.g., waiting lines)
+
+&#10687; Priority queues for event processing
+
+### Visualization of stack &#8227;
+
+![Screenshot of stack process](../assets/Queue.png)
+
+### Implementation in Javascript
+
+```javascript
 class Stack {
   constructor() {
     this.stack = [];
@@ -9,9 +30,6 @@ class Stack {
 
   //this metho will remove the last in value
   remove() {
-    if (this.isEmpty()) {
-      return "Stack is empty";
-    }
     this.stack.pop();
   }
 
@@ -84,3 +102,8 @@ console.log(myStack.clear());
 console.log(myStack.isEmpty());
 
 console.log(myStack.size());
+```
+
+## Author
+
+#### Mr. Munna
