@@ -1,6 +1,7 @@
 class Queue {
   constructor(c) {
-    this.front, (this.rear = 0);
+    this.front = 0;
+    this.rear = 0;
     this.capacity = c;
     this.queue = new Array(this.capacity);
   }
@@ -24,8 +25,15 @@ class Queue {
   dequeue() {
     if (this.isEmpty()) {
       return "Queue is empty";
+    } else {
+      for (let i = 0; i < this.rear - 1; i++) {
+        this.queue[i] = this.queue[i + 1];
+      }
+      if (this.rear < this.capacity) this.queue[this.rear] = 0;
+      this.rear--;
     }
-    return this.queue.shift();
+
+    return;
   }
 
   //checks if the queue is empty or not
@@ -82,5 +90,6 @@ queue.enqueue(20);
 queue.enqueue(30);
 queue.enqueue(40);
 queue.enqueue(50);
-
+queue.dequeue();
+console.log("front value:", queue.peek());
 console.log(`queue value:`, queue.printQueue());

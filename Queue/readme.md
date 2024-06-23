@@ -19,89 +19,101 @@ To remember queue in other way we can compare queue with McDonalds queue system.
 ### Implementation in Javascript
 
 ```javascript
-class Stack {
-  constructor() {
-    this.stack = [];
-  }
-  //this method will add a value ( First in )
-  add(data) {
-    this.stack.push(data);
-  }
-
-  //this metho will remove the last in value
-  remove() {
-    this.stack.pop();
+class Queue {
+  constructor(c) {
+    this.front = 0;
+    this.rear = 0;
+    this.capacity = c;
+    this.queue = new Array(this.capacity);
   }
 
-  // this method checks if the method empty or not
+  // Function to insert an element at the rear of the queue
+
+  enqueue(data) {
+    // Check queue is full or not
+    if (this.capacity === this.rear) {
+      return "Queue is empty";
+    }
+    // insert element at the rear
+    else {
+      this.queue[this.rear] = data;
+      this.rear++;
+    }
+    return;
+  }
+
+  //removing the first element that has been added in the queue and resetting the queue
+  dequeue() {
+    if (this.isEmpty()) {
+      return "Queue is empty";
+    } else {
+      for (let i = 0; i < this.rear - 1; i++) {
+        this.queue[i] = this.queue[i + 1];
+      }
+      if (this.rear < this.capacity) this.queue[this.rear] = 0;
+      this.rear--;
+    }
+
+    return;
+  }
+
+  //checks if the queue is empty or not
   isEmpty() {
-    return this.stack.length === 0 ? "true" : "false";
+    return this.front === this.rear ? true : false;
   }
 
-  // this method clears the stack
-  clear() {
-    return (this.stack = []);
+  //print front of the queue
+  peek() {
+    if (this.isEmpty()) {
+      return "Queue is empty";
+    }
+    return this.queue[this.front];
   }
 
-  // this method reverse the stack
-  reverse() {
-    return this.stack.reverse();
-  }
-
-  // this method checks if the particular element exists or not
-  contain(element) {
-    return this.stack.includes(element);
-  }
-
-  //this method will show the size of the stack
+  //total size of the queue
   size() {
-    return this.stack.length;
+    return this.queue.length;
   }
 
-  // this method will print all the value of stack
-  printStack() {
-    return this.stack;
+  //remove all the values
+  clear() {
+    this.queue = [];
   }
 
-  //this method clones the stack
-  clone() {
-    let newStack = new Stack();
-    newStack.stack = [...this.stack];
-    return newStack;
+  //print all the value
+  printQueue() {
+    if (this.isEmpty()) {
+      return "Queue is empty";
+    }
+    let str = "";
+    for (let i = this.front; i < this.rear; i++) {
+      str += this.queue[i] + "\n";
+    }
+    return str;
   }
 
-  // this method will return the stack into an array
+  //convert to array
   toArray() {
-    return [...this.stack];
+    const newQueue = new Queue();
+    newQueue.queue = [...this.queue];
+    return newQueue;
   }
 
-  //this method will return the stack into a string
+  //convert to string
   toString() {
-    return this.stack.join(", ").toString();
+    return this.queue.join(", ");
   }
 }
 
-//usage Example
-let myStack = new Stack();
+let queue = new Queue(4);
 
-myStack.add(4);
-myStack.add(5);
-myStack.add(10);
-myStack.add(20);
-myStack.add(7);
-myStack.remove();
-console.log(myStack.printStack());
-console.log(myStack.contain(4));
-console.log(myStack);
-console.log(myStack.reverse());
-
-console.log(myStack.size());
-
-console.log(myStack.clear());
-
-console.log(myStack.isEmpty());
-
-console.log(myStack.size());
+queue.enqueue(20);
+queue.enqueue(30);
+queue.enqueue(40);
+queue.enqueue(50);
+queue.dequeue();
+console.log("front value:", queue.peek());
+console.log(`queue value:`, queue.printQueue());
 ```
 
 ## Author
