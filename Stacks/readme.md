@@ -23,40 +23,24 @@ class Stack {
   constructor() {
     this.stack = [];
   }
-
-  // this method will add the value at the last
-  push(data) {
+  //this method will add a value ( First in )
+  add(data) {
     this.stack.push(data);
   }
 
-  // this method will remove the value from first
-  pop() {
+  //this metho will remove the last in value
+  remove() {
     this.stack.pop();
   }
 
-  // this method will give the last element of the stack
-  peek() {
-    return this.stack[this.stack.length - 1];
-  }
-
-  // this method gives whether the stack is empty or not
+  // this method checks if the method empty or not
   isEmpty() {
-    return this.stack.length === 0 ? true : false;
+    return this.stack.length === 0 ? "true" : "false";
   }
 
-  // this method gives the size of the stack
-  size() {
-    return this.stack.length;
-  }
-
-  // this method clear all the elements from stack
+  // this method clears the stack
   clear() {
-    this.stack = [];
-  }
-
-  // this method will check whether some element is present or not
-  contain(elem) {
-    return this.stack.includes(elem);
+    return (this.stack = []);
   }
 
   // this method reverse the stack
@@ -64,16 +48,22 @@ class Stack {
     return this.stack.reverse();
   }
 
-  // this method print the values of stack
-  printStack() {
-    let string = "";
-    for (let i = 0; i < this.stack.length; i++) {
-      string += this.stack[i] + "\n";
-    }
-    return string;
+  // this method checks if the particular element exists or not
+  contain(element) {
+    return this.stack.includes(element);
   }
 
-  // this method will make a copy of old stack
+  //this method will show the size of the stack
+  size() {
+    return this.stack.length;
+  }
+
+  // this method will print all the value of stack
+  printStack() {
+    return this.stack;
+  }
+
+  //this method clones the stack
   clone() {
     let newStack = new Stack();
     newStack.stack = [...this.stack];
@@ -85,46 +75,24 @@ class Stack {
     return [...this.stack];
   }
 
-  // this method returns stack into string
-  toString1() {
-    return this.stack.join(", ");
-  }
-
-  // another way of printing stack into string
-  toString2() {
-    return this.stack.toString();
+  //this method will return the stack into a string
+  toString() {
+    return this.stack.join(", ").toString();
   }
 }
 
-// Usage of Stack
+//usage Example
 let myStack = new Stack();
 
-// push
-myStack.push(5);
-myStack.push(9);
-myStack.push(7);
-myStack.push(2);
-myStack.push(6);
-myStack.push(0);
-myStack.push(4);
-myStack.push(5);
-
+myStack.add(4);
+myStack.add(5);
+myStack.add(10);
+myStack.add(20);
+myStack.add(7);
+myStack.remove();
 console.log(myStack.printStack());
-
-// pop
-myStack.pop();
-
-console.log(myStack.printStack());
-
-const clonedStack = myStack.clone();
-console.log(clonedStack.printStack());
-
-console.log(myStack.toArray());
-
-console.log(myStack.toString1());
-
-console.log(myStack.toString2());
-
+console.log(myStack.contain(4));
+console.log(myStack);
 console.log(myStack.reverse());
 
 console.log(myStack.size());
@@ -138,4 +106,4 @@ console.log(myStack.size());
 
 ## Author
 
-#### Mahfuzur Rahman Munna
+#### Mr. Munna

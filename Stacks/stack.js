@@ -3,12 +3,12 @@ class Stack {
     this.stack = [];
   }
   //this method will add a value ( First in )
-  push(data) {
+  add(data) {
     this.stack.push(data);
   }
 
   //this metho will remove the last in value
-  pop() {
+  remove() {
     this.stack.pop();
   }
 
@@ -32,13 +32,14 @@ class Stack {
     return this.stack.includes(element);
   }
 
+  //this method will show the size of the stack
+  size() {
+    return this.stack.length;
+  }
+
   // this method will print all the value of stack
   printStack() {
-    let value = "";
-    for (let i = 0; i < this.stack.length; i++) {
-      value += this.stack[i] + "\n";
-    }
-    return stack;
+    return this.stack;
   }
 
   //this method clones the stack
@@ -65,7 +66,18 @@ let myStack = new Stack();
 myStack.add(4);
 myStack.add(5);
 myStack.add(10);
-
+myStack.add(20);
+myStack.add(7);
 myStack.remove();
-
 console.log(myStack.printStack());
+console.log(myStack.contain(4));
+console.log(myStack);
+console.log(myStack.reverse());
+
+console.log(myStack.size());
+
+console.log(myStack.clear());
+
+console.log(myStack.isEmpty());
+
+console.log(myStack.size());
