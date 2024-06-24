@@ -16,4 +16,17 @@ function VowelCount(str) {
 const myString = "oaelooo";
 // console.log(VowelCount(myString));
 
-console.log(SwapCase("muNna"));
+// console.log(SwapCase("muNna"));
+
+function countVowels(str) {
+  let count = 0;
+  let vowels = ["a", "e", "i", "o", "u"];
+
+  for (char of str) {
+    if (vowels.includes(char)) count++;
+  }
+
+  return count;
+}
+
+console.log(countVowels("munna"));

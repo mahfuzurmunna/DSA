@@ -4,7 +4,7 @@ A queue is a special type data structure is used for storing and managing data i
 
 To remember queue in other way we can compare queue with McDonalds queue system.
 
-## Usage Of Queue:
+### Usage Of Queue:
 
 &#10687; Task scheduling in operating systems
 
