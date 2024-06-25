@@ -90,15 +90,58 @@ class LinkedList {
     if (this.head.data === key) {
       this.head = this.head.next;
     }
+    let prevNode = this.head;
+    let currentNode = this.head.next;
+
+    while (currentNode) {
+      if (currentNode.data === key) {
+        currentNode = currentNode.next;
+        return;
+      }
+      prevNode = currentNode;
+    }
+
+    return "No node is found with the key";
   }
 
   // Remove last element
+  removeLast() {
+    if (!this.head) {
+      return "LinkedList is empty";
+    }
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let currentNode = this.head.next;
+
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+
+    currentNode = null;
+  }
 
   // Search operation in linked list (LeetCode)
 
   // Traversal of linked list (LeetCode)
 
   // Reverse linked list
+  reverse() {
+    let next = null;
+    let prev = null;
+    let current = this.head;
+
+    while (current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+  }
+  //print linked list
   printList() {
     let arr = [];
     let node = this.head;
