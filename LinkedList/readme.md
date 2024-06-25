@@ -18,7 +18,7 @@ This allows for dynamic memory allocation and efficient insertion and deletion o
 
 ### Visualization of stack &#8227;
 
-![Screenshot of stack process](../assets/linked List.png)
+![Screenshot of stack process](../assets/linkedList.png)
 
 ### Implementation in Javascript
 
