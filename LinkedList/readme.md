@@ -18,106 +18,177 @@ This allows for dynamic memory allocation and efficient insertion and deletion o
 
 ### Visualization of stack &#8227;
 
-![Screenshot of stack process](../assets/Linked List.png)
+![Screenshot of stack process](../assets/linked List.png)
 
 ### Implementation in Javascript
 
 ```javascript
-class Linked List {
-  constructor(c) {
-    this.front = 0;
-    this.rear = 0;
-    this.capacity = c;
-    this.Linked List = new Array(this.capacity);
-  }
-
-  // Function to insert an element at the rear of the Linked List
-
-  enLinked List(data) {
-    // Check Linked List is full or not
-    if (this.capacity === this.rear) {
-      return "Linked List is empty";
-    }
-    // insert element at the rear
-    else {
-      this.Linked List[this.rear] = data;
-      this.rear++;
-    }
-    return;
-  }
-
-  //removing the first element that has been added in the Linked List and resetting the Linked List
-  deLinked List() {
-    if (this.isEmpty()) {
-      return "Linked List is empty";
-    } else {
-      for (let i = 0; i < this.rear - 1; i++) {
-        this.Linked List[i] = this.Linked List[i + 1];
-      }
-      if (this.rear < this.capacity) this.Linked List[this.rear] = 0;
-      this.rear--;
-    }
-
-    return;
-  }
-
-  //checks if the Linked List is empty or not
-  isEmpty() {
-    return this.front === this.rear ? true : false;
-  }
-
-  //print front of the Linked List
-  peek() {
-    if (this.isEmpty()) {
-      return "Linked List is empty";
-    }
-    return this.Linked List[this.front];
-  }
-
-  //total size of the Linked List
-  size() {
-    return this.Linked List.length;
-  }
-
-  //remove all the values
-  clear() {
-    this.Linked List = [];
-  }
-
-  //print all the value
-  printLinked List() {
-    if (this.isEmpty()) {
-      return "Linked List is empty";
-    }
-    let str = "";
-    for (let i = this.front; i < this.rear; i++) {
-      str += this.Linked List[i] + "\n";
-    }
-    return str;
-  }
-
-  //convert to array
-  toArray() {
-    const newLinked List = new Linked List();
-    newLinked List.Linked List = [...this.Linked List];
-    return newLinked List;
-  }
-
-  //convert to string
-  toString() {
-    return this.Linked List.join(", ");
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
   }
 }
 
-let Linked List = new Linked List(4);
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
 
-Linked List.enLinked List(20);
-Linked List.enLinked List(30);
-Linked List.enLinked List(40);
-Linked List.enLinked List(50);
-Linked List.deLinked List();
-console.log("front value:", Linked List.peek());
-console.log(`Linked List value:`, Linked List.printLinked List());
+  // Insert data at the start
+  insertAtFirst(data) {
+    const newNode = new Node(data, this.head);
+    this.head = newNode;
+  }
+
+  // Insert data at a given node
+  insertDataAtGivenValue(prevNode, data) {
+    if (!prevNode) return "prevNode cannot be null";
+    const newNode = new Node(data);
+    prevNode.next = newNode;
+  }
+
+  // Insert data at the end
+  insertAtLast(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    if (!this.head.next) {
+      this.head.next = newNode;
+      return;
+    }
+    let lastNode = this.head.next;
+    while (lastNode.next) {
+      lastNode = lastNode.next;
+    }
+    lastNode.next = newNode;
+  }
+
+  // Size of the linked list
+  size() {
+    let count = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      count++;
+      currentNode = currentNode.next;
+    }
+    console.log(count);
+    return count;
+  }
+
+  // Get the first element of the list
+  getFirst() {
+    return this.head.data;
+  }
+
+  getAt(index) {
+    let current = 0;
+    let node = this.head;
+
+    while (node) {
+      if (current === index) {
+        return node;
+      }
+      node = node.next;
+      count++;
+    }
+    return null;
+  }
+
+  //clear the list
+  clear() {
+    return (this.head = null);
+  }
+
+  // Remove the first element
+  removeFirst() {
+    return (this.head = this.head.next);
+  }
+
+  // Remove element by given key
+  removeByGivenKey(key) {
+    if (!this.head) {
+      return "Linked List is Empty";
+    }
+    if (this.head.data === key) {
+      this.head = this.head.next;
+    }
+    let prevNode = this.head;
+    let currentNode = this.head.next;
+
+    while (currentNode) {
+      if (currentNode.data === key) {
+        currentNode = currentNode.next;
+        return;
+      }
+      prevNode = currentNode;
+    }
+
+    return "No node is found with the key";
+  }
+
+  // Remove last element
+  removeLast() {
+    if (!this.head) {
+      return "LinkedList is empty";
+    }
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let currentNode = this.head.next;
+
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+
+    currentNode = null;
+  }
+
+  // Search operation in linked list (LeetCode)
+
+  // Traversal of linked list (LeetCode)
+
+  // Reverse linked list
+  reverse() {
+    let next = null;
+    let prev = null;
+    let current = this.head;
+
+    while (current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+  }
+  //print linked list
+  printList() {
+    let arr = [];
+    let node = this.head;
+    while (node) {
+      arr.push(node.data);
+      node = node.next;
+    }
+    console.log(arr.join(" -> "));
+    return arr;
+  }
+}
+
+// Example usage:
+const ll = new LinkedList();
+ll.insertAtFirst(3);
+ll.insertAtFirst(2);
+ll.insertAtFirst(1);
+// ll.insertDataAtGivenValue();
+ll.printList(); // Output: 1 -> 2 -> 3
+ll.size();
+// ll.reverse();
+// ll.printList(); // Output: 3 -> 2 -> 1
 ```
 
 ## Author
