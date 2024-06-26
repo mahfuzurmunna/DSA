@@ -44,7 +44,7 @@ class LinkedList {
   // Insert data at a given node
   insertDataAtGivenValue(prevNode, data) {
     if (!prevNode) return "prevNode cannot be null";
-    const newNode = new Node(data);
+    const newNode = new Node(data, prevNode.next);
     prevNode.next = newNode;
   }
 
@@ -83,6 +83,7 @@ class LinkedList {
     return this.head.data;
   }
 
+  //get element with a given index
   getAt(index) {
     let current = 0;
     let node = this.head;

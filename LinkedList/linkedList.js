@@ -10,66 +10,74 @@ class LinkedList {
     this.head = null;
   }
 
-  // Insert data at the start
+  //insert data at firt position
   insertAtFirst(data) {
-    const newNode = new Node(data, this.head);
-    this.head = newNode;
+    const newNode = new Node(data);
+    return (this.head = newNode);
   }
 
   // Insert data at a given node
-  insertDataAtGivenValue(prevNode, data) {
-    if (!prevNode) return "prevNode cannot be null";
-    const newNode = new Node(data);
-    prevNode.next = newNode;
+  insertAfterANode(prevNode, data) {
+    if (!prevNode) return "There is no previous node";
+    const newNode = new Node(data, prevNode.next);
+
+    return (this.prevNode.next = newNode);
   }
 
-  // Insert data at the end
+  //insert data at last
   insertAtLast(data) {
-    const newNode = new Node(data);
     if (!this.head) {
-      this.head = newNode;
-      return;
+      return "LinedList is empty";
     }
+    const newNode = new Node(data);
     if (!this.head.next) {
       this.head.next = newNode;
-      return;
     }
-    let lastNode = this.head.next;
-    while (lastNode.next) {
-      lastNode = lastNode.next;
+
+    let currentNode = this.head;
+    let nextNode = this.head.next;
+
+    while (nextNode.next) {
+      nextNode = newNode.next;
+      currentNode = nextNode;
     }
-    lastNode.next = newNode;
+    return (nextNode.next = newNode);
   }
 
-  // Size of the linked list
+  //size of the linked list
   size() {
+    if (!this.head) {
+      return "LinkedList is empty";
+    }
     let count = 0;
     let currentNode = this.head;
+
     while (currentNode) {
       count++;
       currentNode = currentNode.next;
     }
-    console.log(count);
+
     return count;
   }
 
-  // Get the first element of the list
+  //get first element of the linked list
   getFirst() {
     return this.head.data;
   }
 
+  //get element with a given index
   getAt(index) {
     let current = 0;
     let node = this.head;
-
     while (node) {
       if (current === index) {
         return node;
+      } else {
+        current++;
+        node = node.next;
       }
-      node = node.next;
-      count++;
     }
-    return null;
+    return "No data at given index";
   }
 
   //clear the list
@@ -79,29 +87,32 @@ class LinkedList {
 
   // Remove the first element
   removeFirst() {
+    if (!this.head) {
+      return "LinkedList is Empty";
+    }
+
     return (this.head = this.head.next);
   }
 
   // Remove element by given key
   removeByGivenKey(key) {
     if (!this.head) {
-      return "Linked List is Empty";
+      return "LinkedList is Empty";
     }
+
     if (this.head.data === key) {
-      this.head = this.head.next;
+      return (this.head = this.head.next);
     }
-    let prevNode = this.head;
-    let currentNode = this.head.next;
 
-    while (currentNode) {
-      if (currentNode.data === key) {
-        currentNode = currentNode.next;
-        return;
+    let currentNode = this.head;
+
+    while (currentNode.next) {
+      if (currentNode.next.data === key) {
+        return (currentNode.next = currentNode.next.next);
       }
-      prevNode = currentNode;
+      currentNode = currentNode.next;
     }
-
-    return "No node is found with the key";
+    return "No node is found with the given key";
   }
 
   // Remove last element
@@ -110,24 +121,20 @@ class LinkedList {
       return "LinkedList is empty";
     }
     if (!this.head.next) {
-      this.head = null;
-      return;
+      return (this.head = null);
+    }
+    let prevNode = this.head;
+    let lastNode = this.head.next;
+
+    while (lastNode.next) {
+      prevNode = lastNode;
+      lastNode = lastNode.next;
     }
 
-    let currentNode = this.head.next;
-
-    while (currentNode.next) {
-      currentNode = currentNode.next;
-    }
-
-    currentNode = null;
+    return (lastNode = null);
   }
 
-  // Search operation in linked list (LeetCode)
-
-  // Traversal of linked list (LeetCode)
-
-  // Reverse linked list
+  //reverse linked list
   reverse() {
     let next = null;
     let prev = null;
@@ -135,26 +142,14 @@ class LinkedList {
 
     while (current) {
       next = current.next;
-      current.next = prev;
+      current.next = current;
       prev = current;
       current = next;
     }
     this.head = prev;
   }
-  //print linked list
-  printList() {
-    let arr = [];
-    let node = this.head;
-    while (node) {
-      arr.push(node.data);
-      node = node.next;
-    }
-    console.log(arr.join(" -> "));
-    return arr;
-  }
 }
 
-// Example usage:
 const ll = new LinkedList();
 ll.insertAtFirst(3);
 ll.insertAtFirst(2);
@@ -162,5 +157,3 @@ ll.insertAtFirst(1);
 // ll.insertDataAtGivenValue();
 ll.printList(); // Output: 1 -> 2 -> 3
 ll.size();
-// ll.reverse();
-// ll.printList(); // Output: 3 -> 2 -> 1
