@@ -7,17 +7,17 @@ class Stack {
     this.stack.push(data);
   }
 
-  //this metho will remove the last in value
+  //this method will remove the last in value
   remove() {
     if (this.isEmpty()) {
       return "Stack is empty";
     }
-    this.stack.pop();
+    return this.stack.pop();
   }
 
   // this method checks if the method empty or not
   isEmpty() {
-    return this.stack.length === 0 ? "true" : "false";
+    return this.stack.length === 0 ? true : false;
   }
 
   // this method clears the stack
@@ -27,7 +27,9 @@ class Stack {
 
   // this method reverse the stack
   reverse() {
-    return this.stack.reverse();
+    let reversedStack = new Stack();
+    reversedStack = [...this.stack].reverse();
+    return reversedStack;
   }
 
   // this method checks if the particular element exists or not
@@ -72,15 +74,19 @@ myStack.add(10);
 myStack.add(20);
 myStack.add(7);
 myStack.remove();
-console.log(myStack.printStack());
+console.log("first print:" + myStack.printStack());
 console.log(myStack.contain(4));
 console.log(myStack);
 console.log(myStack.reverse());
 
+// console.log(myStack.size());
+
+// console.log(myStack.clear());
+
+// console.log(myStack.isEmpty());
+console.log("remove" + myStack.remove());
+
 console.log(myStack.size());
-
-console.log(myStack.clear());
-
-console.log(myStack.isEmpty());
-
-console.log(myStack.size());
+console.log("befor" + myStack.printStack());
+myStack.remove();
+console.log("after" + myStack.printStack());

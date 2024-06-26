@@ -7,11 +7,10 @@ class Queue {
   }
 
   // Function to insert an element at the rear of the queue
-
   enqueue(data) {
     // Check queue is full or not
     if (this.capacity === this.rear) {
-      return "Queue is empty";
+      return "Queue is full";
     }
     // insert element at the rear
     else {
@@ -21,28 +20,24 @@ class Queue {
     return;
   }
 
+  //checks if the queue is empty or not
+  isEmpty() {
+    return this.front === this.rear;
+  }
+
   //removing the first element that has been added in the queue and resetting the queue
   dequeue() {
     if (this.isEmpty()) {
       return "Queue is empty";
     } else {
-      for (let i = 0; i < this.rear - 1; i++) {
-        this.queue[i] = this.queue[i + 1];
-      }
-      if (this.rear < this.capacity) this.queue[this.rear] = 0;
-      this.rear--;
+      this.front++;
     }
 
     return;
   }
 
-  //checks if the queue is empty or not
-  isEmpty() {
-    return this.front === this.rear ? true : false;
-  }
-
   //print front of the queue
-  peek() {
+  peekFirst() {
     if (this.isEmpty()) {
       return "Queue is empty";
     }
@@ -51,12 +46,14 @@ class Queue {
 
   //total size of the queue
   size() {
-    return this.queue.length;
+    return this.rear - this.front;
   }
 
   //remove all the values
   clear() {
-    this.queue = [];
+    this.queue = new Array(this.capacity);
+    this.front = 0;
+    this.rear = 0;
   }
 
   //print all the value
@@ -71,16 +68,9 @@ class Queue {
     return str;
   }
 
-  //convert to array
-  toArray() {
-    const newQueue = new Queue();
-    newQueue.queue = [...this.queue];
-    return newQueue;
-  }
-
   //convert to string
   toString() {
-    return this.queue.join(", ");
+    return this.queue.slice(this.front, this.rear).join(", ");
   }
 }
 
@@ -92,4 +82,5 @@ queue.enqueue(40);
 queue.enqueue(50);
 queue.dequeue();
 console.log("front value:", queue.peek());
+console.log(typeof queue);
 console.log(`queue value:`, queue.printQueue());
