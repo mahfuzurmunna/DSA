@@ -148,6 +148,31 @@ class LinkedList {
     }
     this.head = prev;
   }
+
+  //search operation if it exist or not
+  search(key) {
+    if (!this.head) return "Linked List is empty";
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.data === key) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+  //traverse a linked list
+  print() {
+    if (!this.head) return "Linked List is empty";
+    let currentNode = this.head;
+    let listValues = [];
+    while (currentNode.next) {
+      listValues.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+    console.log(`${listValues.join(" -> ")}`);
+    return listValues;
+  }
 }
 
 const ll = new LinkedList();
