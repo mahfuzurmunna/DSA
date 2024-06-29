@@ -45,13 +45,13 @@ class DoublyLinkedList {
       return;
     }
     const newNode = new Node(data, prevNode.next, prevNode);
-    let currentNode = prevNode.next;
-    if (prevNode.next) {
-      currentNode.prev = newNode;
+    let nextNode = prevNode.next;
+    if (nextNode) {
+      nextNode.prev = newNode;
     }
 
     prevNode.next = newNode;
-    if (!currentNode) {
+    if (!nextNode) {
       this.tail = newNode;
     }
   }
@@ -89,17 +89,6 @@ class DoublyLinkedList {
     let current = this.head;
     let temp = null;
 
-    while (current) {
-      //swapping
-      temp = current.prev;
-      current.prev = current.next;
-      current.next = temp;
-      //move to next node
-      current = current.prev;
-    }
-    if (temp !== null) {
-      this.tail = this.head;
-      this.head = temp.prev;
-    }
+    while (current) {}
   }
 }

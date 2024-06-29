@@ -1,9 +1,9 @@
 //single node
-class BSTnode {
-  constructor(key) {
+class BSTNode {
+  constructor(key, left = null, right = null) {
     this.key = key;
-    this.left = null;
-    this.right = null;
+    this.left = left;
+    this.right = right;
   }
 }
 
@@ -13,16 +13,16 @@ class binarySearchTree {
     this.root = null;
   }
   //insert a node in BST
-  insert(key) {
-    const newNode = new BSTnode(key);
-    if (this.root === null) {
-      this.root = newNode;
+  inertion(key) {
+    const newNode = new BSTNode(key);
+    if (!this.root) {
+      return (this.root = newNode);
     } else {
       this.insertNode(this.root, newNode);
     }
   }
-
   //insertNode function (recursive)
+
   insertNode(node, newNode) {
     // node -> root
     if (newNode.key < node.key) {
