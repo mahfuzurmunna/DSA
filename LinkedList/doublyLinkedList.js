@@ -17,9 +17,6 @@ class DoublyLinkedList {
     const newNode = new Node(data, this.head, null);
     if (this.head) {
       this.head.prev = newNode;
-      if (this.tail === null) {
-        this.tail = newNode;
-      }
     }
     this.head = newNode;
     if (this.tail === null) {
@@ -30,15 +27,15 @@ class DoublyLinkedList {
   //insert node at last
   insertAtLast(data) {
     const newNode = new Node(data, null, this.tail);
+    if (this.tail !== null) {
+      this.tail.next = newNode;
+    }
+
+    this.tail = newNode;
+
     if (!this.head) {
       this.head = newNode;
     }
-    if (!this.tail) {
-      this.tail = newNode;
-      return;
-    }
-
-    this.tail.next = newNode;
   }
 
   //insert node after a give node
@@ -48,13 +45,13 @@ class DoublyLinkedList {
       return;
     }
     const newNode = new Node(data, prevNode.next, prevNode);
-
-    if (prevNode.next !== null) {
-      prevNode.next.prev = newNode;
+    let currentNode = prevNode.next;
+    if (prevNode.next) {
+      currentNode.prev = newNode;
     }
 
     prevNode.next = newNode;
-    if (newNode.next === null) {
+    if (!currentNode) {
       this.tail = newNode;
     }
   }
