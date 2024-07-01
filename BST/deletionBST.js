@@ -22,8 +22,6 @@ class binarySearchTree {
 
   //deletenode Function
   deleteNode(node, key) {
-    // node -> root
-
     if (key < node.key) {
       node.left = this.deleteNode(node.left, key);
     } else if (key > node.key) {
@@ -33,19 +31,20 @@ class binarySearchTree {
         return null;
       } else if (node.left === null) {
         return node.right;
-      } else if ((node.right = null)) {
+      } else if (node.right === null) {
         return node.left;
       } else {
         let tempNode = this.findMinNode(node.right);
-        node.key = tempNode;
+        node.key = tempNode.key;
         node.right = this.deleteNode(node.right, tempNode.key);
       }
     }
     return node;
   }
 
+  //finding the smallest value of right subtree
   findMinNode(node) {
-    while (node.left !== null) {
+    while (node.left) {
       node = node.left;
     }
     return node;

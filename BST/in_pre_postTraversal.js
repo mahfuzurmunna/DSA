@@ -18,7 +18,7 @@ class binarySearchTree {
     return result;
   }
 
-  preOrder() {
+  preOrder(node, result) {
     if (node !== null) {
       result.push(node.key);
       this.preOrder(node.left, result);
@@ -33,7 +33,7 @@ class binarySearchTree {
     return result;
   }
 
-  inOrder() {
+  inOrder(node, result) {
     this.inOrder(node.left, result);
     result.push(node.key);
     this.inOrder(node.right, result);
@@ -46,7 +46,7 @@ class binarySearchTree {
     return result;
   }
 
-  postOrder() {
+  postOrder(node, result) {
     this.postOrder(node.left, result);
     this.postOrder(node.right, result);
     result.push(node.key);

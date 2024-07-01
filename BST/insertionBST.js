@@ -13,7 +13,7 @@ class binarySearchTree {
     this.root = null;
   }
   //insert a node in BST
-  inertion(key) {
+  insertion(key) {
     const newNode = new BSTNode(key);
     if (!this.root) {
       return (this.root = newNode);
@@ -44,12 +44,44 @@ class binarySearchTree {
 // just inserting random keys
 const bst = new binarySearchTree();
 
-bst.insert(15);
-bst.insert(25);
-bst.insert(10);
-bst.insert(7);
-bst.insert(22);
-bst.insert(17);
-bst.insert(13);
+bst.insertion(15);
+bst.insertion(25);
+bst.insertion(10);
+bst.insertion(7);
+bst.insertion(22);
+bst.insertion(17);
+bst.insertion(13);
 
-console.log(bst);
+// console.log(bst);
+
+const recursiveDepthFirstTraversal = (root) => {
+  if (root === null) {
+    return [];
+  }
+
+  const leftValues = recursiveDepthFirstTraversal(root.left);
+  const rightValues = recursiveDepthFirstTraversal(root.right);
+
+  return [root.key, ...leftValues, ...rightValues];
+};
+
+const iterativeDFS = (root) => {
+  if (root === null) {
+    return "The tree is empty";
+  }
+  const values = [];
+  const stack = [root];
+  while (stack.length > 0) {
+    const node = stack.pop();
+    values.push(node.key);
+
+    if (node.right !== null) {
+    }
+  }
+};
+
+console.log(iterativeDFS(bst.root));
+const stack = [];
+stack.push(20);
+stack.push;
+console.log(recursiveDepthFirstTraversal(bst.root));

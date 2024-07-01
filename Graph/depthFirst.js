@@ -22,6 +22,7 @@ function depthFSIterative(graph, start) {
       }
     }
   }
+  // return visited;
 }
 
 function depthFSRecursive(graph, start, visited = new Set()) {

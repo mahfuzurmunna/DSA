@@ -22,5 +22,11 @@ const breadthFirstSearch = (root) => {
 };
 
 const recursiveBFS = (root) => {
-  const values = [];
+  if (root === null) return [];
+  const leftValues = recursiveBFS(node.left);
+  console.log(leftValues);
+  const rightValue = recursiveBFS(node.right);
+  console.log(rightValue);
+
+  return [root, node.right, node.left];
 };
