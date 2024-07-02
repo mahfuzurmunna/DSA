@@ -58,7 +58,7 @@
 
 &#10687; **Expression Trees** &#8227; Used in syntax tree parsing and expression representation in compilers.
 
-### Implementation of Binary Search Tree in Javascript
+## Implementation of Binary Search Tree in Javascript
 
 ```javascript
 //basic binary search implementation
@@ -121,20 +121,6 @@ const recursiveDepthFirstTraversal = (root) => {
   return [root.key, ...leftValues, ...rightValues];
 };
 
-const iterativeDFS = (root) => {
-  if (root === null) {
-    return "The tree is empty";
-  }
-  const values = [];
-  const stack = [root];
-  while (stack.length > 0) {
-    const node = stack.pop();
-    values.push(node.key);
-
-    if (node.right !== null) {
-    }
-  }
-};
 
 // just inserting random keys
 const bst = new binarySearchTree();
@@ -147,12 +133,7 @@ bst.insertion(22);
 bst.insertion(17);
 bst.insertion(13);
 
-// console.log(bst);
-console.log(iterativeDFS(bst.root));
-const stack = [];
-stack.push(20);
-stack.push;
-console.log(recursiveDepthFirstTraversal(bst.root));
+
 ```
 
 ### Deletion in BST
@@ -197,43 +178,6 @@ console.log(recursiveDepthFirstTraversal(bst.root));
     return node;
   }
 
-```
-
-### Depth first Search of BST
-
-```javascript
-const breadthFirstSearch = (root) => {
-  const values = [];
-  if (root === null) {
-    return values;
-  }
-
-  const queue = [root];
-  while (queue.length > 0) {
-    const node = queue.shift(); // point of optimization
-    values.push(node.key);
-
-    if (node.left !== null) {
-      queue.push(node.left);
-    }
-
-    if (node.right !== null) {
-      queue.push(node.right);
-    }
-  }
-
-  return values;
-};
-
-const recursiveBFS = (root) => {
-  if (root === null) return [];
-  const leftValues = recursiveBFS(node.left);
-  console.log(leftValues);
-  const rightValue = recursiveBFS(node.right);
-  console.log(rightValue);
-
-  return [root, node.right, node.left];
-};
 ```
 
 ### Breadth first Search of BST
