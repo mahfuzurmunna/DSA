@@ -3,12 +3,6 @@
 &#10687; A binary tree is a tree data structure where each `node` consist at most `2 chilren` (left & right) and that has exactly 1 root.
 &#10687; There is only 1 path between root and any node. Empty tree also considered as binary tree.
 
-## Binary Search Tree
-
-&#10687; A binary search tree is also a binary tree where left sub keys are less than root key
-&#10687; Right sub keys are greater than root key
-&#10687; Left sub trees and rights sub tress are must be binary search tree.
-
 ### Key Concepts
 
 &#10687; **Node** &#8227; A basic unit of a binary tree that contains a value or data as well as pointers to its left and right descendants.
@@ -25,7 +19,44 @@
 
 ### Visualization of stack &#8227;
 
-![Screenshot of stack process](../assets/binarytree.png)
+![Screenshot of binary tree key concept](../assets/binarytree.png)
+
+### Full Binary Tree
+
+&#10687; In Full Binary tree, each node only can have 0 or
+2 children
+
+![Screenshot of Full BT  concept](../assets/fullBinaryTree.png)
+
+### Complete Binary Tree
+
+&#10687; In a complete binary tree, every node (except the last level) must have exactly two children. The last level can have either one or two children.
+
+![Screenshot of Full BT  concept](../assets/completeBinaryTree.png)
+
+### Perfect Binary Tree
+
+&#10687; In Perfect Binary Tree, Every internal node have exactly two children and leaf in nodes are at the same level
+
+![Screenshot of Full BT  concept](../assets/perfectBinaryTree.png)
+
+## Binary Search Tree
+
+&#10687; A binary search tree is also a binary tree where left sub keys are less than root key
+&#10687; Right sub keys are greater than root key
+&#10687; Left sub trees and rights sub tress are must be binary search tree.
+
+![Screenshot of Full BT  concept](../assets/BinarySearchTree.png)
+
+### Applications of Binary Search Trees
+
+&#10687; **Searching** &#8227; BSTs allow for efficient search operations.
+
+&#10687; **Sorting** &#8227; In-order traversal of a BST provides a sorted sequence of elements.
+
+&#10687; **Hierarchical Data Representation** &#8227; Hierarchical data structures, such as file systems and organizational hierarchies, are represented as binary trees.
+
+&#10687; **Expression Trees** &#8227; Used in syntax tree parsing and expression representation in compilers.
 
 ### Implementation of Binary Search Tree in Javascript
 
