@@ -59,29 +59,6 @@ bst.insertion(22);
 bst.insertion(17);
 bst.insertion(13);
 
-// console.log(bst);
-
-const iterativeDFS = (root) => {
-  if (root === null) {
-    return "The tree is empty";
-  }
-  const values = [];
-  const stack = [root];
-  while (stack.length > 0) {
-    const node = stack.pop();
-    values.push(node.key);
-
-    if (node.right !== null) {
-    }
-  }
-};
-
-// console.log(iterativeDFS(bst.root));
-// const stack = [];
-// stack.push(20);
-// stack.push;
-// console.log(recursiveDepthFirstTraversal(bst.root));
-
 //normal approach (stack)
 const depthFirstTraversal = (root) => {
   const values = [];

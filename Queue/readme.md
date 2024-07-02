@@ -27,8 +27,7 @@ class Queue {
     this.queue = new Array(this.capacity);
   }
 
-  // Function to insert an element at the rear of the queue
-
+  // To insert an element at the rear of the queue
   enqueue(data) {
     // Check queue is full or not
     if (this.capacity === this.rear) {
