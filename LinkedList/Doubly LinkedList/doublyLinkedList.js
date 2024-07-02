@@ -89,6 +89,19 @@ class DoublyLinkedList {
     let current = this.head;
     let temp = null;
 
-    while (current) {}
+    while (current) {
+      // swapping the pointers
+      temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
+
+      // move to next node
+      current = current.next;
+    }
+
+    if (temp !== null) {
+      this.tail = this.head;
+      this.head = temp.prev;
+    }
   }
 }

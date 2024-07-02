@@ -1,6 +1,6 @@
 # Linked List Concept
 
-A linked list is a linear dynamic data structure which consist of a node where each nodes contains data and a reference to the next node in sequence. The elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers.
+A linked list is a linear dynamic data structure which consist of a `node` where each `nodes` contains `data` and a `reference` to the next node in sequence. The elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers.
 
 This allows for dynamic memory allocation and efficient insertion and deletion operations compared to arrays.
 
@@ -15,6 +15,16 @@ This allows for dynamic memory allocation and efficient insertion and deletion o
 &#10687; Representing graphs using linked lists.
 
 &#10687; Allocating and deallocating memory dynamically.
+
+### Types Of Linked List
+
+&#10687; Singly Linked List
+
+&#10687; Doubly Linked List
+
+Both works very similar, but the difference is **Singly Linked List's** each node has a single pointer `(next)` that points to the _**Next Node**_ on the list.
+
+While in **Doubly Linked List**, each node has two pointers `(previous & next)`, one pointing to the _**Next Node**_ and other pointing to the _**Previous Node**_.
 
 ### Visualization of Singly Linked List Linked List &#8227;
 
