@@ -153,10 +153,11 @@ class LinkedList {
   search(key) {
     if (!this.head) return "Linked List is empty";
     let currentNode = this.head;
-    while (currentNode) {
+    while (currentNode.next) {
       if (currentNode.data === key) {
         return true;
       }
+      currentNode = currentNode.next;
     }
 
     return false;

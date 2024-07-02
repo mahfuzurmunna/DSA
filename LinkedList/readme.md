@@ -16,11 +16,11 @@ This allows for dynamic memory allocation and efficient insertion and deletion o
 
 &#10687; Allocating and deallocating memory dynamically.
 
-### Visualization of stack &#8227;
+### Visualization of Singly Linked List Linked List &#8227;
 
 ![Screenshot of stack process](../assets/linkedList.png)
 
-### Implementation in Javascript
+### Implementation of Singly Linked List in Javascript
 
 ```javascript
 class Node {
@@ -83,21 +83,6 @@ class LinkedList {
     return this.head.data;
   }
 
-  //get element with a given index
-  getAt(index) {
-    let current = 0;
-    let node = this.head;
-
-    while (node) {
-      if (current === index) {
-        return node;
-      }
-      node = node.next;
-      count++;
-    }
-    return null;
-  }
-
   //clear the list
   clear() {
     return (this.head = null);
@@ -150,8 +135,47 @@ class LinkedList {
   }
 
   // Search operation in linked list (LeetCode)
+  //search node with a given index
+  getAt(index) {
+    let current = 0;
+    let node = this.head;
+
+    while (node) {
+      if (current === index) {
+        return node;
+      }
+      node = node.next;
+      count++;
+    }
+    return null;
+  }
+
+  //search node with key
+  getWith(key) {
+    if (!this.head) return "Linked List is empty";
+    let currentNode = this.head;
+
+    while (currentNode.next) {
+      if (currentNode.key === key) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
 
   // Traversal of linked list (LeetCode)
+  print() {
+    if (!this.head) return "Linked List is empty";
+    let listValues = [];
+    let currentNode = this.head;
+    while (currentNode.next) {
+      listValues.push(currentNode);
+      currentNode = currentNode.next;
+    }
+
+    return listValues.join(" -> ");
+  }
 
   // Reverse linked list
   reverse() {
