@@ -54,19 +54,25 @@ function hasPathBFS(graph, start, dest) {
 
 function hasPathRec(graph, start, dest, visited = new Set()) {
   if (start === dest) return true;
-
-  //just 4 lines for visited
   if (visited.has(start)) {
     return false;
   }
   visited.add(start);
 
-  //rest all is good
-
   for (const neighbour of graph[start]) {
-    if (hasPathRec(graph, neighbour, dest) === true) {
+    if (hasPathRec(graph, neighbour, dest, visited) === true) {
       return true;
     }
   }
   return false;
 }
+
+// Sample graph as adjacency list
+const graph = {
+  A: ["B", "C"],
+  B: ["D", "E"],
+  C: ["F"],
+  D: [],
+  E: ["F"],
+  F: [],
+};
