@@ -1,4 +1,4 @@
-function beadthFS(graph, start) {
+function breadthFS(graph, start) {
   const queue = [start];
   const visited = new Set();
   const traversalOutput = [];
@@ -26,5 +26,5 @@ const graph = {
   f: ["e"],
 };
 
-const bfsTraversalOutput = beadthFS(graph, "a");
+const bfsTraversalOutput = breadthFS(graph, "a");
 console.log(bfsTraversalOutput);

@@ -22,6 +22,7 @@ function biggestInland(graph) {
       //   size = size + dfs(neighbour);
       size += dfs(neighbour);
     }
+
     return size;
   }
 

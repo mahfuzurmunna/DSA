@@ -1,13 +1,13 @@
 const graph = {
   a: ["b", "c"],
-  b: ["a", "c", "d"],
-  c: ["a", "b", "d"],
-  d: ["b", "c"],
-  e: ["f"],
+  b: ["c", "d"],
+  c: ["d", "e"],
+  d: [],
+  e: ["d"],
   f: ["e"],
 };
 
-function connectedIsland(graph) {
+function countIsland(graph) {
   const visited = new Set();
   let count = 0;
 
@@ -21,7 +21,6 @@ function connectedIsland(graph) {
       }
     }
   }
-
   for (const node in graph) {
     if (!visited.has(node)) {
       dfs(node);
@@ -31,6 +30,6 @@ function connectedIsland(graph) {
   return count;
 }
 
-const count = connectedIsland(graph);
+const count = countIsland(graph);
 
 console.log(count);
