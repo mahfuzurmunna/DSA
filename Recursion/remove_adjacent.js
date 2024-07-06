@@ -14,9 +14,10 @@ function removeAdjRecursion(string) {
   if (string === "") return "";
 
   if (string[0] === string[1]) {
-    return removeAdjRecursion(string.substring(1));
+    return removeAdjRecursion(string.slice(1));
+  } else {
+    return string[0] + removeAdjRecursion(slice(1));
   }
-  return string[0] + removeAdjRecursion(string.substring(1));
 }
 
 console.log(removeAdjRecursion("eeeemmmmmmmmm1000"));

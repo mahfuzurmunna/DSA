@@ -6,8 +6,8 @@ function recursiveLengthString(string) {
 
 function iterativeStringLength(string) {
   let count = 0;
-  while (string) {
-    count += 1;
+  while (string.length > 0) {
+    count++;
     string = string.slice(1);
   }
   return count;

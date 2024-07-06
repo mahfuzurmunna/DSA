@@ -4,9 +4,8 @@ function palindromeCheck(string) {
   if (string[0] === string[string.length - 1]) {
     return palindromeCheck(string.slice(1, string.length - 1));
   }
-  {
-    return false;
-  }
+
+  return false;
 }
 
 function reverse(string) {
