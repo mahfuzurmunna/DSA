@@ -1,14 +1,21 @@
-function minCoin(coins, amount, memo = {}) {
+function minSum(amount, numbers, memo = {}) {
   if (amount in memo) return memo[amount];
   if (amount === 0) return 0;
   if (amount < 0) return -1;
 
-  let minCoinsCount = Infinity;
+  let minCoinsSum = Infinity;
 
-  for (const coin of coins) {
-    const result = minCoin(coins, amount - coin, memo);
+  for (const number of numbers) {
+    let result = minSum(amount - number, numbers, memo);
     if (result !== -1) {
-      minCoinsCount = Math.min(minCoinsCount, result + 1);
+      result++;
+      if (result < minCoinsSum) {
+        minCoinsSum = result;
+      }
     }
   }
+
+  memo[amount] = minCoinsSum === Infinity ? -1 : minCoinsSum;
+
+  return memo[amount];
 }

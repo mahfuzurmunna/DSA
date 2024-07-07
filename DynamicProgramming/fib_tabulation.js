@@ -1,8 +1,8 @@
 function fibTabulation(n) {
   if (n <= 1) return n;
 
-  const table = Array(n + 1).fill(0);
-
+  const table = new Array(n + 1);
+  table[0] = 0;
   table[1] = 1;
 
   for (let i = 2; i <= n; i++) {
@@ -11,3 +11,5 @@ function fibTabulation(n) {
 
   return table[n];
 }
+
+console.log(fibTabulation(4));
