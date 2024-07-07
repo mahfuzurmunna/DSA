@@ -13,12 +13,17 @@ function fibonacci(value) {
   return n0;
 }
 
-//recursive
-function recursiveFibonacci(value) {
+//recursive with dp memoization
+function recursiveFibonacci(value, memo = {}) {
+  if (value in memo) return memo[value];
   if (value <= 1) {
     return value;
   }
-  return recursiveFibonacci(value - 2) + recursiveFibonacci(value - 1);
+  memo[value] =
+    recursiveFibonacci(value - 2, memo) + recursiveFibonacci(value - 1, memo);
+  return memo[value];
 }
 
 console.log(fibonacci(4));
+
+//dp
