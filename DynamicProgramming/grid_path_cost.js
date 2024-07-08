@@ -6,17 +6,13 @@ function maxPathCost(grid, row = 0, col = 0, memo = {}) {
     return memo[pos];
   }
 
-  if (
-    row >= grid.length ||
-    grid[row][col] === "X" || // X or wall or snake
-    col >= grid[0].length
-  ) {
-    return -In;
+  if (row >= grid.length || col >= grid[0].length) {
+    return -Infinity;
   }
 
   //check if you have arrived at given location
   if (row === grid.length - 1 && col === grid[0].length - 1) {
-    return 1;
+    return grid[row][col];
   }
 
   memo[pos] =

@@ -1,5 +1,10 @@
 function countPaths(grid, row = 0, col = 0, memo = {}) {
   const pos = row + "," + col;
+  //return the cache result
+  if (pos in memo) {
+    return memo[pos];
+  }
+
   if (
     row >= grid.length ||
     col >= grid[0].length ||
@@ -10,11 +15,6 @@ function countPaths(grid, row = 0, col = 0, memo = {}) {
   //check if you arrived at given location
   if (row === grid.length - 1 && col === grid[0].length - 1) {
     return 1;
-  }
-
-  //return the cache result
-  if (pos in memo) {
-    return memo[pos];
   }
 
   const rightPath = countPaths(grid, row + 1, col, memo);
