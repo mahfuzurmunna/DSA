@@ -8,10 +8,7 @@ function minSum(amount, numbers, memo = {}) {
   for (const number of numbers) {
     let result = minSum(amount - number, numbers, memo);
     if (result !== -1) {
-      result++;
-      if (result < minCoinsSum) {
-        minCoinsSum = result;
-      }
+      minCoinsSum = Math.min(minCoinsSum, result + 1);
     }
   }
 
