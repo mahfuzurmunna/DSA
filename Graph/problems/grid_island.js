@@ -13,11 +13,12 @@ function islandCount(grid) {
       r >= rows ||
       c < 0 ||
       c >= cols ||
-      grid[r][c] === 0 ||
+      grid[r][c] === "0" ||
       visited.has(pos)
     ) {
       return;
     }
+    visited.add(pos);
 
     dfs(r + 1, c);
     dfs(r - 1, c);
@@ -28,7 +29,7 @@ function islandCount(grid) {
   //using loops in rows and cols
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (grid[r][c] === 1 && !visited.has(r + "," + c)) {
+      if (grid[r][c] === "1" && !visited.has(r + "," + c)) {
         count++;
         dfs(r, c);
       }
@@ -38,10 +39,9 @@ function islandCount(grid) {
 }
 
 const grid = [
-  [1, 0, 0, 1, 0],
-  [1, 0, 0, 1, 1],
-  [0, 1, 0, 1, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 1, 1, 1],
+  ["1", "1", "1", "1", "0"],
+  ["1", "1", "0", "1", "0"],
+  ["1", "1", "0", "0", "0"],
+  ["0", "0", "0", "0", "0"],
 ];
-islandCount(grid);
+console.log(islandCount(grid));

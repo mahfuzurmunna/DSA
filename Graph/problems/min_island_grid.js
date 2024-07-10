@@ -7,7 +7,7 @@ function minIslandSize(grid) {
   const rows = grid.length;
   const cols = grid[0].length;
   const visited = new Set();
-  let smallestSize = Infinity;
+  let smallestSize = 0;
 
   function exploreSize(r, c) {
     const pos = r + "," + c;
@@ -17,7 +17,7 @@ function minIslandSize(grid) {
       r >= rows ||
       c < 0 ||
       c >= cols ||
-      grid[r][c] === "W" ||
+      grid[r][c] === 0 ||
       visited.has(pos)
     ) {
       return 0;
@@ -35,9 +35,9 @@ function minIslandSize(grid) {
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (grid[r][c] === "L" && !visited.has(r + "," + c)) {
+      if (grid[r][c] === 1 && !visited.has(r + "," + c)) {
         const islandSize = exploreSize(r, c);
-        if (islandSize < smallestSize) {
+        if (islandSize > smallestSize) {
           smallestSize = islandSize;
         }
       }
@@ -48,11 +48,14 @@ function minIslandSize(grid) {
 }
 
 const grid = [
-  ["W", "L", "W", "W", "L"],
-  ["L", "L", "W", "L", "L"],
-  ["W", "L", "W", "W", "L"],
-  ["W", "W", "W", "W", "W"],
-  ["W", "W", "L", "L", "L"],
+  [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+  [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
+  [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
 ];
 
 console.log(minIslandSize(grid)); // Output should be the size of the smallest island

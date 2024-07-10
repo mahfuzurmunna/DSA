@@ -1,8 +1,3 @@
-/**
- * @param {string} word1
- * @param {string} word2
- * @return {string}
- */
 var mergeAlternately = function (word1, word2) {
   let mergedString = "";
   let i = 0;
@@ -24,7 +19,7 @@ var mergeAlternately = function (word1, word2) {
 
   //if word2 is bigger
   while (j < word2.length) {
-    mergedString += word2[i];
+    mergedString += word2[j];
     j++;
   }
   return mergedString;
