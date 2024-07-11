@@ -1,16 +1,16 @@
 function canPlaceFlowers(flowerbed, n) {
-  let count = 0;
-  for (let i = 0; i < flowerbed.length; i++) {
-    if (flowerbed[i] === 0) {
-      let isLeftEmpty = i === 0 || flowerbed[i - 1] === 0;
-      let rightEmpty = i === flowerbed.length - 1 || flowerbed[i + 1] === 0;
-
-      if (isLeftEmpty && rightEmpty) {
-        flowerbed[i] = 1;
-        count++;
-        if (count >= n) return true;
-      }
+  flowerbed = [0, ...flowerbed, 0];
+  for (let i = 1; i < flowerbed.length - 1; i++) {
+    if (n === 0) break;
+    if (
+      flowerbed[i] !== 1 &&
+      flowerbed[i - 1] !== 1 &&
+      flowerbed[i + 1] !== 1
+    ) {
+      flowerbed[i] = 1;
+      n--;
     }
   }
-  return count >= n;
+
+  return n === 0;
 }
