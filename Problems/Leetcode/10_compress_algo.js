@@ -17,6 +17,7 @@ var compress = function (chars) {
         chars[index++] = str;
       }
     }
-    return index;
+    i = j;
   }
+  return index;
 };
