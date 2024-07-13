@@ -1,23 +1,23 @@
 var compress = function (chars) {
-  let index = 0;
-  let i = 0;
+  let count = 0;
+  let j = 0;
+  let currChar = chars[0];
+  for (let i = 0; i < chars.length; i++) {
+    if (char[i] === currChar) {
+      count++;
+    } else {
+      char[j] = currChar;
 
-  while (i < chars.length) {
-    let j = i;
-
-    while (j < chars.length && chars[j] === chars[i]) {
-      j++;
-    }
-
-    let count = j - 1;
-    chars[index++] = chars[i];
-
-    if (count > 1) {
-      for (const str of count.toString()) {
-        chars[index++] = str;
+      //if an element is multiple then we will change it
+      if (count > 1) {
+        for (const str of count.toString()) {
+          char[++j] = str;
+        }
       }
+      j++;
+      currChar = char[i];
+      counter = 1;
     }
-    i = j;
   }
-  return index;
+  return j;
 };
