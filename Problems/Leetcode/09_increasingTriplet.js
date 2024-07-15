@@ -1,19 +1,18 @@
 function increasingTriplet(nums) {
-  let first = Infinity;
-  let second = Infinity;
+  let i = Infinity;
+  let j = Infinity;
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] < first) {
-      first = nums[i];
-    } else if (nums[i] < second) {
-      second = nums[i];
-      if (nums[i + 1] > second) {
-        return true;
-      }
+  for (let num of nums) {
+    if (num < i) {
+      i = num;
+    } else if (num < j) {
+      j = num;
+    } else {
+      return true;
     }
   }
   return false;
 }
 
-let nums = [2, 1, 5, 0, 4];
+let nums = [20, 100, 10, 12, 5, 13];
 console.log(increasingTriplet(nums));
