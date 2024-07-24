@@ -22,6 +22,6 @@ var maxOperations = function (nums, k) {
 // map method
 var maxOperationsMap = function (nums, k) {};
 
-let nums = [3, 1, 3, 4, 3];
+let nums = [3, 1, 3, 4, 2];
 
 console.log(maxOperations(nums, 6));

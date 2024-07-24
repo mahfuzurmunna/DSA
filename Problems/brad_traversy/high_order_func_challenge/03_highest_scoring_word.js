@@ -59,6 +59,7 @@ function highestScoringWord(string) {
 
 function HSW(str) {
   const words = str.split(" ");
+
   const scores = words.map((word) =>
     Array.from(word).reduce(
       (score, letter) => score + letter.charCodeAt(0) - 96,
@@ -66,9 +67,9 @@ function HSW(str) {
     )
   );
 
-  let highestScore = Math.max(...scores);
+  const highestScore = Math.max(...scores);
   const highestIndex = scores.indexOf(highestScore);
   return words[highestIndex];
 }
 
-console.log(HSW("what time are we climbing up the volcano"));
+console.log(HSW("to achieve dream only hardship is the path"));

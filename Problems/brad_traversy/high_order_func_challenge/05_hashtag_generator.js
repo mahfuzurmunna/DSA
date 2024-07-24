@@ -1,9 +1,15 @@
 function generateHashtag(str) {
-  if (str.length > 140 || str === "") {
-    return false;
-  }
-  let newStr = str.trim();
-  console.log(newStr);
-}
+  const words = str
+    .trim()
+    .split(" ")
+    .reduce((hash, word) => {
+      return hash + word.charAt(0).toUpperCase() + word.slice(1);
+    }, "#");
 
-console.log(generateHashtag("hello world!"));
+  return words.length === 0 || words.length > 140 ? false : words;
+}
+let str = "hello world";
+let trimmed = str.trim().split(" ");
+// console.log(trimmed);
+
+console.log(generateHashtag(str));
