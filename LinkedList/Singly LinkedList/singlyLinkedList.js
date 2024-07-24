@@ -19,7 +19,7 @@ class LinkedList {
   // Insert data at a given node
   insertAfterANode(prevNode, data) {
     if (!prevNode) return "There is no previous node";
-    const newNode = new Node(data, prevNode.next);
+    const newNode = new Node(data, this.prevNode.next);
 
     return (this.prevNode.next = newNode);
   }
@@ -123,11 +123,10 @@ class LinkedList {
     if (!this.head.next) {
       return (this.head = null);
     }
-    let prevNode = this.head;
+
     let lastNode = this.head.next;
 
     while (lastNode.next) {
-      prevNode = lastNode;
       lastNode = lastNode.next;
     }
 
@@ -172,7 +171,6 @@ class LinkedList {
       currentNode = currentNode.next;
     }
     console.log(`${listValues.join(" -> ")}`);
-    return listValues;
   }
 }
 
@@ -181,5 +179,5 @@ ll.insertAtFirst(3);
 ll.insertAtFirst(2);
 ll.insertAtFirst(1);
 // ll.insertDataAtGivenValue();
-ll.printList(); // Output: 1 -> 2 -> 3
+ll.print(); // Output: 1 -> 2 -> 3
 ll.size();
