@@ -75,6 +75,31 @@ class SinglyLinkedList {
     }
     return size;
   }
+  reverse() {
+    let next = null;
+    let prev = null;
+    let current = this.head;
+
+    while (current) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+  }
+
+  findMiddle() {
+    if (!this.head) return "LL is empty";
+    let fast = this.head;
+    let slow = this.head;
+
+    while (fast && fast.next) {
+      fast = fast.next.next;
+      slow = slow.next;
+    }
+    return slow;
+  }
 }
 
 const ll = new SinglyLinkedList();
@@ -82,8 +107,50 @@ const ll = new SinglyLinkedList();
 ll.add(100);
 ll.add(200);
 ll.add(300);
+ll.add(400);
+ll.add(500);
+ll.add(600);
 
-console.log(ll.printLinkedList());
+// console.log(ll.printLinkedList());
 
 ll.delete();
-console.log(ll);
+// console.log(ll);
+
+function reverseStr(str) {
+  const ll = new SinglyLinkedList();
+  for (let word of str) {
+    ll.add(word);
+  }
+
+  ll.reverse();
+  const result = ll.printLinkedList();
+
+  return result.split(" -> ").join("");
+}
+
+// console.log(reverseStr("muina"));
+
+function findMiddleOfStr(str) {
+  const ll = new SinglyLinkedList();
+  for (let word of str) {
+    ll.add(word);
+  }
+  const middleLetter = ll.findMiddle();
+  return middleLetter.data;
+}
+
+// console.log(findMiddleOfStr("muina"));
+
+function findMiddleOfLl(list) {
+  let fast = list.head;
+  let slow = list.head;
+  let count = 1;
+  while (fast && fast.next) {
+    count++;
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+  return slow.data;
+}
+console.log(ll.printLinkedList());
+console.log(findMiddleOfLl(ll));
