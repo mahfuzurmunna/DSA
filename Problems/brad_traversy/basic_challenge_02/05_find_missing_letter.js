@@ -1,22 +1,18 @@
-function findMissingLetter(arr) {
-  let alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+function missingLetter(arr) {
+  const alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  let firstLetter = alphabets.indexOf(arr[0]);
-  let lastLetter = alphabets.indexOf(arr[arr.length - 1]);
-  let j = 0;
-  for (let i = firstLetter; i <= lastLetter; i++) {
-    if (arr[j] !== alphabets[i]) {
-      return alphabets[i];
+  const fIndex = alphabets.indexOf(arr[0]);
+  const lIndex = alphabets.indexOf(arr[arr.length - 1]);
+  let result = "";
+
+  for (let i = fIndex; i <= lIndex; i++) {
+    if (!arr.includes(alphabets[i])) {
+      result += alphabets[i];
     }
-    j++;
   }
-  return alphabets[lastLetter + 1];
+  return result;
 }
 
-let arr = ["a", "c", "d", "e", "f"];
+const arr = ["O", "Q", "R", "S"];
 
-const alphabets = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-console.log(findMissingLetter(arr));
-
-// console.log(firstLetter);
+console.log(missingLetter(arr));

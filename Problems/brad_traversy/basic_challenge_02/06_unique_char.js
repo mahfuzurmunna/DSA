@@ -1,16 +1,5 @@
 function areAllCharactersUnique(str) {
-  const strMap = new Map();
-
-  for (let char of str) {
-    strMap.set(char, (strMap.get(char) || 0) + 1);
-  }
-  let strArr = Array.from(strMap.values());
-
-  if (strArr.includes(2)) {
-    return false;
-  } else {
-    return true;
-  }
+  let hello = 10;
 }
 
-console.log(areAllCharactersUnique("programming"));
+console.log(areAllCharactersUnique("progamin"));
