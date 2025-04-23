@@ -1,47 +1,51 @@
+// node class
 class Node {
-  constructor(data, next = null, prev = null) {
+  constructor(data, prev = null, next = null) {
     this.data = data;
-    this.next = next;
     this.prev = prev;
+    this.next = next;
   }
 }
 
+// doubly linkedList class
 class DoublyLinkedList {
   constructor() {
     this.head = null;
-    this.prev = null;
-  }
-
-  addAtFirst(value) {
-    const newNode = new Node(value, this.head, null);
-    if (this.head) this.head.next = newNode;
-    this.head = newNode;
-    if (!this.tail) {
-      this.tail = newNode;
-    }
-  }
-  addAtLast(value) {
-    const newNode = new Node(value, null, this.tail);
-    if (this.tail) this.tail.next = newNode;
-    this.tail = newNode;
-    if (!this.head) {
-      this.head = newNode;
-    }
+    this.tail = null;
   }
 }
 
-let dLL = new DoublyLinkedList();
-dLL.addAtFirst(100);
-dLL.addAtLast(200);
-dLL.addAtLast(400);
-dLL.addAtLast(600);
-dLL.addAtLast(800);
-dLL.addAtLast(900);
-dLL.addAtLast(1000);
+// insert at first method
+DoublyLinkedList.prototype.insertAtBeginning = function (data) {
+  const newNode = new Node(data, null, this.head);
+  if (this.head !== null) {
+    this.head.prev = newNode;
+  }
+  this.head = newNode;
+  if (this.tail === null) {
+    this.tail = newNode;
+  }
+};
 
-// Example of adding after a specific node
-let node = dLL.head.next; // Node with value 200
-dLL.addAfterNode(node, 300);
+// insert at end method
+DoublyLinkedList.prototype.insertAtEnd = function (data) {
+  const newNode = new Node(data, this.tail, null);
+  if (this.tail !== null) {
+    this.tail.next = newNode;
+  }
+  this.tail = newNode;
+  if (this.head === null) {
+    this.head = newNode;
+  }
+};
 
-console.log(dLL.print()); // Output: 100 200 300 400 600 800 900
-console.log(dLL.findMiddleNode()); // Output: 400
+// insert node at a given point
+DoublyLinkedList.prototype.insertAtGivenNode = function (data) {};
+
+// new doubly linkedListS
+const dLL = new DoublyLinkedList();
+
+dLL.insertAtBeginning(10);
+// dLL.insertAtEnd(20);
+
+console.log(dLL);

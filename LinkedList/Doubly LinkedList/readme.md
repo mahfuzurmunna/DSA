@@ -70,7 +70,7 @@ class DoublyLinkedList {
 
 ```
 
-### Removing Methods in Singly linked List
+### Removing Methods in Doubly linked List
 
 ```javascript
   //delete first node

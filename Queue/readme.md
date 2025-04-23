@@ -12,9 +12,9 @@ To remember queue in other way we can compare queue with McDonalds queue system.
 
 &#10687; Priority queues for event processing
 
-### Visualization of stack &#8227;
+### Visualization of Queue &#8227;
 
-![Screenshot of stack process](../assets/Queue.png)
+![Screenshot of queue process](../assets/Queue.png)
 
 ### Implementation in Javascript
 

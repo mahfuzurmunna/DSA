@@ -49,6 +49,7 @@ class SinglyLinkedList {
     if (!this.head) return "List is empty";
     this.head = this.head.next;
   }
+
   //   delte last node
   deleteLastNode() {
     if (!this.head) return "List is empty";
@@ -63,22 +64,58 @@ class SinglyLinkedList {
 
     secondLastNode.next = null;
   }
+
   //delete a node with a given key
   deleteByKey(key) {
-    if (!this.head) return "List is empty";
+    if (!this.head) {
+      console.log('"List is empty"');
+      return;
+    } //null;
+
+    //data found at head
     if (this.head.data === key) {
-      this.head = null;
+      this.head = this.head.next;
+      return;
     }
+
     let currentNode = this.head;
-    while (currentNode.next !== null) {
-      if (currentNode.next.data === data) {
+
+    while (currentNode.next) {
+      if (currentNode.next.data === key) {
         currentNode.next = currentNode.next.next;
         return;
       }
       currentNode = currentNode.next;
     }
-    console.log("No node found with the given key: ", key);
+
+    console.log(
+      `Enter a valid key, this key ${key} is not present in the list`
+    );
+
+    return;
   }
+
+  //reverse linkedList
+  reverseLinkedList() {
+    if (!this.head) {
+      console.log("List is empty");
+      return;
+    }
+
+    let prevNode = null;
+    let currentNode = this.head;
+    let nextNode = null;
+
+    while (currentNode) {
+      nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+
+    this.head = prevNode;
+  }
+
   //   print the linkedList
   printList() {
     if (!this.head) return "List is empty";
@@ -96,12 +133,11 @@ const myLL = new SinglyLinkedList();
 myLL.insert(4);
 myLL.insert(5);
 myLL.insert(6);
-myLL.insert(7);
-myLL.insertAfterNode(6, 10);
 
-myLL.deleteLastNode();
-myLL.deleteLastNode();
-myLL.deleteLastNode();
-myLL.deleteLastNode();
-myLL.deleteLastNode();
-console.log(myLL);
+myLL.insertAfterNode(6, 10);
+myLL.deleteByKey(6);
+myLL.printList();
+myLL.reverseLinkedList();
+myLL.printList()
+
+// console.log(myLL);

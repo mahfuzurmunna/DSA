@@ -4,6 +4,10 @@ A linked list is a linear dynamic data structure which consist of a `node` where
 
 This allows for dynamic memory allocation and efficient insertion and deletion operations compared to arrays.
 
+### Visualization of Singly Linked List Linked List &#8227;
+
+![Screenshot of LinkedList process](../assets/singlyLinkedList.png)
+
 ### Linked List Applications
 
 &#10687; Efficient Memory Utilization ,i.e no need to pre-allocate memory
