@@ -1,13 +1,13 @@
-// node class
+//node class
 class Node {
-  constructor(data, prev = null, next = null) {
+  constructor(data, left, right) {
     this.data = data;
-    this.prev = prev;
-    this.next = next;
+    this.left = left;
+    this.right = right;
   }
 }
 
-// doubly linkedList class
+// doubly linked list constructor
 class DoublyLinkedList {
   constructor() {
     this.head = null;
@@ -16,36 +16,34 @@ class DoublyLinkedList {
 }
 
 // insert at first method
-DoublyLinkedList.prototype.insertAtBeginning = function (data) {
+DoublyLinkedList.prototype.insertAtfirst = function (data) {
   const newNode = new Node(data, null, this.head);
-  if (this.head !== null) {
-    this.head.prev = newNode;
+  if (this.head) {
+    this.head.left = newNode;
   }
+
   this.head = newNode;
-  if (this.tail === null) {
+
+  if (!this.tail) {
     this.tail = newNode;
   }
 };
 
-// insert at end method
-DoublyLinkedList.prototype.insertAtEnd = function (data) {
+//insert at last method
+DoublyLinkedList.prototype.insertAtLast = function (data) {
   const newNode = new Node(data, this.tail, null);
-  if (this.tail !== null) {
-    this.tail.next = newNode;
+
+  if (this.tail) {
+    this.tail.left = newNode;
   }
   this.tail = newNode;
-  if (this.head === null) {
+  if (!this.head) {
     this.head = newNode;
   }
 };
 
-// insert node at a given point
-DoublyLinkedList.prototype.insertAtGivenNode = function (data) {};
-
-// new doubly linkedListS
-const dLL = new DoublyLinkedList();
-
-dLL.insertAtBeginning(10);
-// dLL.insertAtEnd(20);
-
-console.log(dLL);
+//insert after a given node/key
+DoublyLinkedList.prototype.insertAfterGivenNode = function (prevNode,data) {
+  
+}
+ 
