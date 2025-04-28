@@ -63,7 +63,7 @@ bst.insertion(13);
 const depthFirstTraversal = (root) => {
   const values = [];
   if (root === null) {
-    return values; // or [];
+    return values; //return null or empty array;
   }
 
   const stack = [root];
@@ -72,11 +72,10 @@ const depthFirstTraversal = (root) => {
     const node = stack.pop();
     values.push(node.key);
 
-    if (node.right !== null) {
+    if (node.right) {
       stack.push(node.right);
     }
-
-    if (node.left !== null) {
+    if (node.left) {
       stack.push(node.left);
     }
   }
@@ -85,20 +84,16 @@ const depthFirstTraversal = (root) => {
 
 //recursive approach
 
-const recursiveDepthFirstTraversal = (root) => {
+const recursiveDepthFirstSearch = (root) => {
   if (root === null) {
-    return []; //return empty array or any message
+    return; // return empty array or message or null
   }
-  const leftValues = recursiveDepthFirstTraversal(root.left);
-  console.log(`left values ->` + leftValues);
-  const rightValues = recursiveDepthFirstTraversal(root.right);
-  console.log(`right values :` + rightValues);
+  const leftValues = recursiveDepthFirstSearch(root.left);
+  const rightValues = recursiveDepthFirstSearch(root.right);
 
+  // return [root.key, leftValues,rightValues]
+  // [a, [b,c,d], [e,f,g]]
   return [root.key, ...leftValues, ...rightValues];
-  //this will return [  1, [ 2, [4, undefined, undefined],  [5, undefined, undefined] ], [ 3, undefined, [6, undefined, undefined]]] [a, [b,d,e], [c,f,g]];
-
-  //if we want to store in them in one array then: then
-  // -> return [this.root,...leftValues, ...rightValues]
 };
 
 console.log(bst.root);

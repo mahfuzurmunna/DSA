@@ -111,7 +111,7 @@ class DoublyLinkedList {
       currentNode.prev = currentNode.next;
       currentNode.next = temp;
 
-      currentNode = currentNode.next;
+      currentNode = currentNode.prev;
     }
     if (temp) {
       this.tail = this.head;

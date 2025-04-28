@@ -1,8 +1,8 @@
 class Node {
-  constructor(key) {
+  constructor(key, left = null, right = null) {
     this.key = key;
-    this.left = null;
-    this.right = null;
+    this.left = left;
+    this.right = right;
   }
 }
 
@@ -12,52 +12,103 @@ class BinarySearchTree {
   }
 
   insert(key) {
-    const newNode = new Node(key);  // Create a new Node
+    const newNode = new Node(key);
     if (!this.root) {
       this.root = newNode;
     } else {
-      this.insertNode(this.root, newNode);
+      this.root = insertNode(this.root, newNode);
     }
   }
 
-  insertNode(rootNode, newNode) {
-    if (newNode.key < rootNode.key) {
-      if (!rootNode.left) {
-        rootNode.left = newNode;
+  insertNode(node, newNode) {
+    if (newNode.key < node.key) {
+      if (!node.left) {
+        node.left = newNode;
       } else {
-        this.insertNode(rootNode.left, newNode);
+        this.insertNode(node.left, newNode);
       }
-    } else if (newNode.key > rootNode.key) {
-      if (!rootNode.right) {
-        rootNode.right = newNode;
+    } else {
+      if (!node.right) {
+        node.right = newNode;
       } else {
-        this.insertNode(rootNode.right, newNode);
+        this.insertNode(node.right, newNode);
       }
     }
   }
 
-  // In-order traversal to print tree values in sorted order
-  inOrderTraversal(node) {
-    if (node !== null) {
-      this.inOrderTraversal(node.left); // Traverse left subtree
-      console.log(node.key);             // Print the node's key
-      this.inOrderTraversal(node.right); // Traverse right subtree
+  delete(key) {
+    this.root = this.deleteNode(this.root, key);
+  }
+
+  deleteNode(node, key) {
+    if (node === null) {
+      return null;
+    }
+    if (key < node.key) {
+      node.left = this.deleteNode(node.left, key);
+    } else if (key > node.key) {
+      node.right = this.deleteNode(node.right, key);
+    } else {
+      if (node.left === null && node.right === null) {
+        return null;
+      } else if (node.left === null) {
+        return node.right;
+      } else if (node.right === null) {
+        return node.left;
+      } else {
+        let tempNode = this.findMinNode(node.right);
+        node.key = tempNode.key;
+        node.right = this.deleteNode(node.right, tempNode.key);
+      }
+    }
+    return node;
+  }
+
+  findMinNode(node) {
+    while (node.left) {
+      node = node.left;
+    }
+    return node;
+  }
+
+  inOrderTraversal() {
+    const result = [];
+
+    this.inOrder(this.root, result);
+    return result;
+  }
+
+  inOrder(node,result) {
+    if (node) {
+      this.inOrder(node.left, result);
+      result.push(node.key);
+      this.inOrder(node.right, result);
+    }
+  }
+
+  preOrderTraversal() {
+    const result = [];
+    this.preOrder(this.root, result);
+    return result;
+  }
+
+  preOrder(node,result) {
+    if (node) {
+      result.push(node.key);
+      this.preOrder(node.left, result);
+      this.preOrder(node.right, result);
+    }
+  }
+
+  postOrderTraversal() {
+    const result = [];
+    this.postOrder(this.root,result);
+    return result;
+  }
+
+  postOrder(node,result) {
+    if(node) {
+      
     }
   }
 }
-
-// Example Usage
-const bst = new BinarySearchTree();
-
-// Insert some nodes
-bst.insert(50);
-bst.insert(30);
-bst.insert(20);
-bst.insert(40);
-bst.insert(70);
-bst.insert(60);
-bst.insert(80);
-
-// Print tree values in sorted order (in-order traversal)
-console.log("In-order traversal of the binary search tree:");
-bst.inOrderTraversal(bst.root);
