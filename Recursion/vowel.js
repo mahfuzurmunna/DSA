@@ -3,7 +3,7 @@ function recursiveCountVowel(string) {
   if (string.length === 0) return 0;
   const vowel = "aeiouAEIOU";
   const isVowel = vowel.includes(string[0]) ? 1 : 0;
-  return countVowel(string.slice(1)) + isVowel;
+  return recursiveCountVowel(string.slice(1)) + isVowel;
 }
 
 //iterative solution

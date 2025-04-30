@@ -30,3 +30,40 @@ function countVowels(str) {
 }
 
 console.log(countVowels("munna"));
+
+function isVowelRepeat(char) {
+  let lowerChar = char.toLowerCase();
+  let vowels = "aeiou";
+
+  if (vowels.indexOf(lowerChar) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function countVowelsAgain(string) {
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (isVowelRepeat(string[i])) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countVowelsAgain("aeioue"));
+
+function recursiveCountVowelsRepeat(string, stringLength) {
+  if (stringLength === 1) {
+    return Number(isVowel(string[0]));
+  }
+  return (
+    recursiveCountVowelsRepeat(string, stringLength - 1) +
+    isVowel(string[stringLength - 1])
+  );
+}
+
+let myStr = "hello";
+
+console.log(recursiveCountVowelsRepeat(myStr, myStr.length));
