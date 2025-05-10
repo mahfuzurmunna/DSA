@@ -1,6 +1,5 @@
 var kidsWithCandies = function (candies, extraCandies) {
   let maxCandies = 0;
-  let sumCandies = [];
   let result = [];
   for (let i = 0; i < candies.length; i++) {
     let candy = candies[i];
@@ -23,8 +22,10 @@ var kidsWithCandies = function (candies, extraCandies) {
 //javascript function method
 function kidWithCandy(candies, extraCandies) {
   const maxCandy = Math.max(...candies);
-  const resultArr = candies.map((candy) =>
-    candy + extraCandies >= maxCandy ? true : false
-  );
-  return resultArr;
+  return candies.map((candy) => candy + extraCandies >= maxCandy);
 }
+
+let candies = [2, 3, 5, 1, 3];
+let extraCandies = 3;
+
+console.log(kidWithCandy(candies,extraCandies));
